@@ -1,17 +1,23 @@
 import Link from 'next/link';
-import { auth } from '../auth';
-export async function Header() {
-  const session = await auth();
+import { HeaderAuth } from './header-auth';
+
+export function Header() {
   return (
-    <header>
-      <div>
-        <div>
+    <header className="bg-darkest">
+      <div className="p-3 flex justify-around items-center">
+        <div className="text-lighter">
           <Link href="/">YinYang</Link>
         </div>
-        <div>
-          <input type="text" placeholder="Search" />
+        <div className="">
+          <input
+            className="bg-darker outline-none p-2 text-lightest placeholder:text-lighter rounded-lg focus:bg-dark"
+            type="text"
+            placeholder="Search"
+          />
         </div>
-        <div>{session?.user ? <div>Sign Out</div> : <div>Sign In</div>}</div>
+        <div>
+          <HeaderAuth />
+        </div>
       </div>
     </header>
   );
