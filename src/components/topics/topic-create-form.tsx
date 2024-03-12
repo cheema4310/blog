@@ -15,7 +15,6 @@ export default function TopicCreateForm() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     actions.createTopic(formData);
-    closeModal();
   };
   return (
     <div>
@@ -26,7 +25,7 @@ export default function TopicCreateForm() {
         <Modal onClose={closeModal}>
           <div className="px-6 py-8 bg-darkest rounded-lg">
             <h2 className="text-center text-xl py-5">Create a Topic</h2>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form action={actions.createTopic} className="flex flex-col gap-4">
               <input
                 name="title"
                 type="text"
